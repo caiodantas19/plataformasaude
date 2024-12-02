@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde cardiovascular: reduzindo colesterol e pressão arterial</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    /* Estilos gerais */
+    body { background-color: #000; color: #e0e0e0; }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #1565c0, #4fc3f7);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    header p { font-size: 1.2em; font-weight: 300; }
+    .header-icon {
+      font-size: 2.5em;
+      color: #ffeb3b;
+    }
+
+    /* Responsividade para header */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      header p { font-size: 1em; }
+    }
+
+    /* Container principal */
+    .container { width: 90%; max-width: 1000px; margin: 20px auto; text-align: center; }
+
+    /* Prova Social */
+    .social-proof {
+      background-color: #fff8dc;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+      width: 100%;
+      margin-top: 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .social-proof h2 { color: #4fc3f7; font-size: 1.5em; margin-bottom: 10px; }
+    .feedback {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fffbe0;
+    }
+    .feedback img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .feedback .text {
+      color: #333;
+    }
+    .feedback .text h3 {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    /* Imagem do usuário sem foto */
+    .no-profile {
+      background-color: #777;
+      display: inline-block;
+      color: #fff;
+      font-size: 1.2em;
+      text-align: center;
+      line-height: 50px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    /* Benefícios do Ebook */
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 30px 0;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #ffeb3b;
+      font-size: 1.1em;
+    }
+    .benefit-icon {
+      font-size: 2em;
+    }
+
+    /* Botão de Compra */
+    .buy-button {
+      background-color: #ffeb3b;
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .buy-button:hover {
+      background-color: #fdd835;
+      transform: scale(1.05);
+    }
+    .buy-icon {
+      font-size: 1.5em;
+    }
+
+    /* Seção de Persuasão */
+    .pain-section {
+      margin-top: 30px;
+      padding: 30px;
+      background-color: #2c2c2c;
+      color: #ffeb3b;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .pain-section h2 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+    .pain-section p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    /* Vantagens do ebook */
+    .advantages {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .advantage-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1em;
+      color: #ffeb3b;
+    }
+    .advantage-icon {
+      font-size: 1.5em;
+      color: #ffeb3b;
+    }
+
+    /* Botão de Compra Fixo */
+    .fixed-buy-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffeb3b;
+      color: #000;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .fixed-buy-button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #121212;
+      color: #e0e0e0;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 40px;
+      border-top: 2px solid #333;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4);
+    }
+    footer h2 {
+      color: #ffeb3b;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+    footer p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    footer .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      color: #ffeb3b;
+    }
+    footer .footer-icon {
+      font-size: 1.5em;
+      transition: color 0.3s;
+    }
+    footer .footer-icon:hover {
+      color: #fdd835;
+    }
+    /* Seção de FAQ */
+.faq-section {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  color: #e0e0e0;
+}
+
+.faq-section h2 {
+  color: #ffeb3b;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-item h3 {
+  font-size: 1.2em;
+  color: #ffeb3b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.faq-item p {
+  margin-top: 10px;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #e0e0e0;
+  display: none;
+}
+
+.faq-item h3:hover {
+  color: #fdd835;
+}
+
+.faq-item h3 span {
+  margin-right: 10px;
+}
+
+.faq-item.active p {
+  display: block;
+}
+.faq-item p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+
+  #timer-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 235, 59, 0.9); /* Cor amarela com transparência */
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 1.5em;
+    color: #000;
+    font-weight: bold;
+    z-index: 1000; /* Para garantir que o cronômetro fique sobre outros elementos */
+  }
+
+/* Selo de Garantia */
+.guarantee-seal {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 1.1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.guarantee-seal i {
+    margin-right: 8px;
+} 
+
+.video-section {
+  max-width: 800px; /* Mesma largura que a prova social */
+  margin: 0 auto;
+}
+
+.custom-video {
+  width: 100%;
+  height: 450px; /* Altura padrão */
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+  </style>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const faqItems = document.querySelectorAll(".faq-item h3");
+
+    faqItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const parent = item.parentNode;
+        parent.classList.toggle("active");
+
+        // Expand or collapse the corresponding answer
+        const answer = parent.querySelector("p");
+        if (parent.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    });
+  });
+</script>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <span class="material-icons header-icon">favorite</span>
+    <h1>Saúde cardiovascular: reduzindo colesterol e pressão arterial</h1>
+    <p>Transforme sua saúde com o conhecimento comprovado para uma vida mais saudável</p>
+  </header>
+
+  <!-- Container Principal -->
+  <div class="container">
+
+    <!-- Benefícios do Ebook -->
+    <div class="benefits">
+      <h2><i class="fas fa-heartbeat"></i> Por que este ebook é essencial para você?</h2>
+      <div class="benefit-item">
+        <span class="material-icons benefit-icon">check_circle</span>
+        <p>Reduza seu colesterol com dicas práticas e fáceis de implementar.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="material-icons benefit-icon">check_circle</span>
+        <p>Controle sua pressão arterial sem medicamentos.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="material-icons benefit-icon">check_circle</span>
+        <p>Aumente sua qualidade de vida e tenha mais energia no dia a dia.</p>
+      </div>
+    </div>
+
+  <!-- Seção de Vídeo -->
+<div class="video-section">
+  <video controls id="promo-video" class="custom-video" controls controlslist="nodownload">
+    <source src="video/Plano de Fundo Para Vídeo Rabiscos Modernos Cor e Estilo Bege Verde Preto.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+</div>
+
+
+
+    <!-- Prova Social -->
+<div class="social-proof">
+  <h2><span class="material-icons">thumb_up</span> O que nossos clientes dizem:</h2>
+  <div class="feedback">
+    <img src="imagens/foto1.jfif" alt="Foto de Cliente 1">
+    <div class="text">
+      <h3>Maria Silva</h3>
+      <p>"Este ebook mudou minha vida! Consegui reduzir meu colesterol em apenas um mês."</p>
+    </div>
+  </div>
+  <div class="feedback">
+    <div class="no-profile">JS</div>
+    <div class="text">
+      <h3>João Santos</h3>
+      <p>"Sempre tive pressão alta, mas com este material aprendi a controlá-la naturalmente."</p>
+    </div>
+  </div>
+  <div class="feedback">
+    <img src="imagens/foto6.jfif" alt="Foto de Cliente 2">
+    <div class="text">
+      <h3>Ana Rodrigues</h3>
+      <p>"Eu recomendo! São dicas práticas que realmente funcionam."</p>
+    </div>
+  </div>
+  <div class="feedback">
+    <img src="imagens/foto4.jfif" alt="Foto de Cliente 3">
+    <div class="text">
+      <h3>Lucas Almeida</h3>
+      <p>"As receitas são deliciosas e fáceis de seguir! Mudou minha alimentação."</p>
+    </div>
+  </div>
+  <div class="feedback">
+    <img src="imagens/foto2..jfif" alt="Foto de Cliente 4">
+    <div class="text">
+      <h3>Fernanda Oliveira</h3>
+      <p>"Me ajudou a entender melhor minha saúde e a fazer escolhas conscientes."</p>
+    </div>
+  </div>
+  <div class="feedback">
+    <img src="imagens/foto3.jfif" alt="Foto de Cliente 5">
+    <div class="text">
+      <h3>Roberto Lima</h3>
+      <p>"Excelente material! As dicas foram simples e eficazes."</p>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Botão de Compra -->
+    <a href="https://pay.kiwify.com.br/vv6duG2" class="buy-button">
+      <span class="material-icons buy-icon">shopping_cart</span> Compre Agora e Transforme Sua Saúde
+    </a>
+<!-- Selo de Garantia -->
+<div class="guarantee-seal">
+    <i class="fas fa-check-circle"></i>
+    Garantia de 7 dias
+</div>
+    <!-- Seção de Persuasão -->
+    <div class="pain-section">
+      <h2>Você sente que sua saúde está em risco?</h2>
+      <p>Imagine poder viver sem se preocupar constantemente com o risco de doenças cardíacas. Esse ebook oferece uma solução para quem já tentou de tudo, mas nunca conseguiu resultados duradouros. Aqui, você encontrará um guia prático e científico para transformar sua saúde sem depender de medicamentos caros ou métodos invasivos. Sua vida e seu bem-estar estão a um passo de mudar para sempre!</p>
+    </div>
+
+    <!-- Vantagens do Ebook -->
+    <div class="advantages">
+      <h3><span class="material-icons">emoji_events</span> Vantagens de Adquirir Este eBook:</h3>
+      <div class="advantage-item">
+        <span class="material-icons advantage-icon">bolt</span>
+        <p>Soluções rápidas e práticas para melhorar sua saúde.</p>
+      </div>
+      <div class="advantage-item">
+        <span class="material-icons advantage-icon">spa</span>
+        <p>Redução de estresse e aumento da qualidade de vida.</p>
+      </div>
+      <div class="advantage-item">
+        <span class="material-icons advantage-icon">favorite_border</span>
+        <p>Mais energia e disposição no seu dia a dia.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão de Compra Fixo -->
+  <a href="https://pay.kiwify.com.br/vv6duG2" class="fixed-buy-button">
+    <span class="material-icons">shopping_cart</span>
+  </a>
+
+  <footer>
+    <h2><i class="fas fa-heart"></i> Sua saúde, nossa prioridade</h2>
+    <p>Imagine uma vida sem o peso do medo das doenças cardiovasculares. Este eBook é mais do que um guia; é uma ponte para uma vida mais leve, onde você pode viver com confiança e bem-estar. Não é apenas sobre reduzir números ou índices - é sobre ganhar qualidade de vida, melhorar sua disposição e transformar sua saúde a longo prazo.</p>
+    <p>Se você está cansado de soluções temporárias, de remédios que trazem mais efeitos colaterais do que soluções reais, aqui está o que você precisa. Tenha a confiança de que está fazendo o melhor para o seu coração e sua saúde.</p>
+    <div class="footer-icons">
+      <span class="footer-icon"><i class="fas fa-check-circle"></i></span>
+      <span class="footer-icon"><i class="fas fa-smile"></i></span>
+      <span class="footer-icon"><i class="fas fa-book"></i></span>
+    </div>
+    <!-- Dúvidas Frequentes -->
+<div class="faq-section">
+  <h2><span class="material-icons">help_outline</span> Dúvidas Frequentes</h2>
+  <div class="faq-item">
+    <h3><span class="material-icons">arrow_drop_down_circle</span> Para quem este ebook é indicado?</h3>
+    <p>Este ebook é ideal para qualquer pessoa que deseja melhorar a saúde cardiovascular, reduzir colesterol e controlar a pressão arterial de forma natural e eficaz.</p>
+  </div>
+  <div class="faq-item">
+    <h3><span class="material-icons">arrow_drop_down_circle</span> Como posso acessar o ebook após a compra?</h3>
+    <p>Após a compra, você receberá um e-mail com o link para download do ebook. Você poderá acessá-lo a qualquer momento em seu dispositivo preferido.</p>
+  </div>
+  <div class="faq-item">
+    <h3><span class="material-icons">arrow_drop_down_circle</span> Qual é o formato do ebook?</h3>
+    <p>O ebook está disponível em formato PDF, que pode ser lido em qualquer dispositivo, incluindo smartphones, tablets, e computadores.</p>
+  </div>
+  <div class="faq-item">
+    <h3><span class="material-icons">arrow_drop_down_circle</span> Posso obter um reembolso se não ficar satisfeito?</h3>
+    <p>Sim, oferecemos uma garantia de reembolso de 7 dias. Se você não estiver satisfeito, entre em contato conosco e faremos o reembolso completo.</p>
+  </div>
+  <div class="faq-item">
+    <h3><span class="material-icons">arrow_drop_down_circle</span> O ebook tem suporte científico?</h3>
+    <p>Sim, todo o conteúdo do ebook é baseado em estudos científicos e orientações de especialistas na área de saúde cardiovascular.</p>
+  </div>
+</div>
+
+  </footer>
+
+<div id="timer-container">
+  <span id="timer">15:00</span>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let timer = document.getElementById("timer");
+    let totalTime = 15 * 60; // 15 minutos em segundos
+
+    function updateTimerDisplay() {
+      let minutes = Math.floor(totalTime / 60);
+      let seconds = totalTime % 60;
+      timer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      let timerInterval = setInterval(function () {
+        if (totalTime <= 0) {
+          clearInterval(timerInterval);
+          timer.textContent = "Clique no carrinho e adquira";
+          return;
+        }
+        totalTime--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    updateTimerDisplay(); // Inicializa o display
+    startTimer(); // Inicia o cronômetro
+  });
+</script>
+
+
+<script>
+  const video = document.getElementById('promo-video');
+  
+
+</script>
+
+
+
+</body>                                                     
+</html>
